@@ -1,0 +1,66 @@
+app:
+  timezone: "Asia/Shanghai"
+  database_path: "data/xianyu.sqlite3"
+  browser_profile_dir: "data/browser-profile"
+  log_level: "INFO"
+
+scraper:
+  base_url: "https://www.goofish.com/search"
+  timeout_ms: 30000
+  wait_after_load_ms: 3500
+  scroll_wait_ms: 1800
+  max_scroll_rounds: 5
+  max_items_per_keyword: 40
+  headless: true
+  block_images: true
+
+scoring:
+  alert_threshold: 0.30
+  max_risk_score: 0.55
+  min_market_samples: 4
+  lookback_days: 30
+  suspicious_price_ratio: 0.55
+  full_freshness_hours: 6
+  stale_after_hours: 72
+  notification_cooldown_hours: 48
+
+notifications:
+  provider: "none"
+  dry_run: true
+  wechat_work:
+    webhook: ""
+    mentioned_mobile_list: []
+  serverchan:
+    sendkey: ""
+  pushplus:
+    token: ""
+    topic: ""
+
+keywords:
+  - name: "iphone_15_256"
+    query: "iPhone 15 256G 国行"
+    min_price: 2800
+    max_price: 4300
+    min_score: 0.34
+    required_keywords:
+      - "256"
+    excluded_keywords:
+      - "监管机"
+      - "拆修"
+      - "改码"
+      - "锁"
+      - "租机"
+      - "美版"
+      - "置换"
+
+  - name: "switch_oled"
+    query: "Switch OLED 国行"
+    min_price: 1000
+    max_price: 2000
+    min_score: 0.28
+    required_keywords:
+      - "oled"
+    excluded_keywords:
+      - "ban机"
+      - "仅主机"
+      - "盒说无"
